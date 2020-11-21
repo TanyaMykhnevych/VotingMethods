@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30711.63
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Voting.WebAPI", "Voting\Voting.WebAPI.csproj", "{DB801BEB-434F-4CE4-95EC-200AA91624BF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Voting.DAL", "Voting.DAL\Voting.DAL.csproj", "{75B572AF-3458-402D-9A45-AF632A5820B5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB801BEB-434F-4CE4-95EC-200AA91624BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB801BEB-434F-4CE4-95EC-200AA91624BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB801BEB-434F-4CE4-95EC-200AA91624BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB801BEB-434F-4CE4-95EC-200AA91624BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75B572AF-3458-402D-9A45-AF632A5820B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75B572AF-3458-402D-9A45-AF632A5820B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75B572AF-3458-402D-9A45-AF632A5820B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75B572AF-3458-402D-9A45-AF632A5820B5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D895AA91-CEF6-4332-9FCA-7E57EAF01EC2}
+	EndGlobalSection
+EndGlobal
