@@ -7,4 +7,4 @@ Implementation of two election rules:
 - The Borda count 
 
 
-![alt text](https://github.com/TanyaMykhnevych/VotingMethods/Voting.UI/blob/main/src/assets/AppScreen.png?raw=true)
+![alt text](https://github.com/TanyaMykhnevych/VotingMethods/blob/master/Voting.UI/src/assets/AppScreen.png?raw=true)
