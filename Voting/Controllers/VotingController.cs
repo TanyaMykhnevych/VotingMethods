@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using Voting.DAL.Models;
 using Voting.DAL.Repositories;
+using Voting.WebAPI.Models;
 
 namespace Voting.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class VotingController : ControllerBase
     {
         private readonly IVotingRepository _repo;
@@ -18,7 +19,7 @@ namespace Voting.Controllers
         public VotingProfile Get() => _repo.GetVotingProfile();
 
         [HttpGet("relative-majority")]
-        public Dictionary<string, int> RelativeMajority()
+        public IEnumerable<VotingScore> RelativeMajority()
         {
             VotingProfile votingProfile = _repo.GetVotingProfile();
 
@@ -26,7 +27,7 @@ namespace Voting.Controllers
             votingProfile.GroupVotingProfiles.ForEach(g =>
             {
                 string candidateName = g.Candidates.First().Name;
-                if(votes.ContainsKey(candidateName))
+                if (votes.ContainsKey(candidateName))
                 {
                     votes[candidateName] = votes[candidateName] + g.NumberOfVotes;
                 }
@@ -36,11 +37,12 @@ namespace Voting.Controllers
                 }
             });
 
-            return votes;
+            return votes.Select(v => new VotingScore { CandidateName = v.Key, NumberOfScores = v.Value })
+                .OrderByDescending(v => v.NumberOfScores);
         }
 
         [HttpGet("borda-rule")]
-        public Dictionary<string, int> BordaRule()
+        public IEnumerable<VotingScore> BordaRule()
         {
             VotingProfile votingProfile = _repo.GetVotingProfile();
 
@@ -63,7 +65,8 @@ namespace Voting.Controllers
                 });
             });
 
-            return votes;
+            return votes.Select(v => new VotingScore { CandidateName = v.Key, NumberOfScores = v.Value })
+                .OrderByDescending(v => v.NumberOfScores);
         }
     }
 }

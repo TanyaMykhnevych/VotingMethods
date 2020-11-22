@@ -42,6 +42,6 @@ namespace Voting.DAL.Repositories
             });
 
             return profile;
-        }        
+        }
     }
 }

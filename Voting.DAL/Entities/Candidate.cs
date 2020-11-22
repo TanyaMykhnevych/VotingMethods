@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Voting.DAL.Entities
+﻿namespace Voting.DAL.Entities
 {
     public class Candidate
     {
