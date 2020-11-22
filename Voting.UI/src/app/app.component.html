@@ -1,0 +1,44 @@
+<h2 class="text-center mt-4 mb-4">Election Methods</h2>
+<br />
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6">
+      <h4 class="mb-3">Election profile</h4>
+      <section>
+        <table class="table table-bordered">
+          <tr *ngFor="let row of votingProfileTable; let i = index;">
+            <td class="field text-center" *ngFor="let field of row" [ngClass]="i == 0 ? 'bg-info' : ''">
+              {{field}}
+            </td>
+          </tr>
+        </table>
+      </section>
+      <br />
+      <h4 class="mb-3">The Borda count</h4>
+      <section>
+        <table class="table table-striped">
+          <tr *ngFor="let row of bordaRuleTable;">
+            <td class="field text-center" *ngFor="let field of row">
+              {{field}}
+            </td>
+          </tr>
+        </table>
+      </section>
+      <br />
+      <h4 class="mb-3">The rule of relative majority</h4>
+      <section>
+        <table class="table table-striped">
+          <tr *ngFor="let row of relativeMajorityTable;">
+            <td class="field text-center" *ngFor="let field of row">
+              {{field}}
+            </td>
+          </tr>
+        </table>
+      </section>
+    </div>
+    <div class="col-lg-6 d-flex align-self-center">
+      <img class="img-fluid" src="../assets/voting.jpg" />
+    </div>
+  </div>
+  <br />
+</div>
