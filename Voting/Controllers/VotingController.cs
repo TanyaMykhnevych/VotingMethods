@@ -15,13 +15,16 @@ namespace Voting.Controllers
 
         public VotingController(IVotingRepository repo) => _repo = repo;
 
-        [HttpGet]
-        public VotingProfile Get() => _repo.GetVotingProfile();
+        [HttpGet("profile/relative-majority")]
+        public VotingProfile GetRelativeMajorityVotingProfile() => _repo.GetRelativeMajorityVotingProfile();
+
+        [HttpGet("profile/borda-rule")]
+        public VotingProfile GetBordaRuleVotingProfile() => _repo.GetBordaRuleVotingProfile();
 
         [HttpGet("relative-majority")]
         public IEnumerable<VotingScore> RelativeMajority()
         {
-            VotingProfile votingProfile = _repo.GetVotingProfile();
+            VotingProfile votingProfile = _repo.GetRelativeMajorityVotingProfile();
 
             Dictionary<string, int> votes = new Dictionary<string, int>();
             votingProfile.GroupVotingProfiles.ForEach(g =>
@@ -44,7 +47,7 @@ namespace Voting.Controllers
         [HttpGet("borda-rule")]
         public IEnumerable<VotingScore> BordaRule()
         {
-            VotingProfile votingProfile = _repo.GetVotingProfile();
+            VotingProfile votingProfile = _repo.GetBordaRuleVotingProfile();
 
             Dictionary<string, int> votes = new Dictionary<string, int>();
             votingProfile.GroupVotingProfiles.ForEach(g =>

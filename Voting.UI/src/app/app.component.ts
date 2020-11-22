@@ -10,40 +10,43 @@ import { VotingHttpService } from './services/voting-http.service';
 })
 export class AppComponent implements OnInit {
 
-  public votingProfileTable: string[][] = [];
+  public majorityProfileTable: string[][] = [];
+  public bordaProfileTable: string[][] = [];
   public bordaRuleTable: string[][] = [];
   public relativeMajorityTable: string[][] = [];
-  private _votingProfile: IVotingProfile;
 
   constructor(private _votingService: VotingHttpService) { }
 
   public ngOnInit() {
-    this._votingService.getVotingProfile().subscribe(p => {
-      this._votingProfile = p;
-      this._fillVotingProfileTable();
+    this._votingService.getRelativeMajorityVotingProfile().subscribe(p => {
+      this.majorityProfileTable = this._fillVotingProfileTable(p);
+    });
+    this._votingService.getBordaRuleVotingProfile().subscribe(p => {
+      this.bordaProfileTable = this._fillVotingProfileTable(p);
     });
     this._votingService.getBordaRule().subscribe(p => {
-      this._fillBordaRuleTable(p);
+      this._fillBordaRuleResults(p);
     });
     this._votingService.getRelativeMajority().subscribe(p => {
-      this._fillgetRelativeMajorityTable(p);
+      this._fillRelativeMajorityResults(p);
     });
   }
 
-  private _fillVotingProfileTable(): void {
-    for (let i = 0; i < this._votingProfile.groupVotingProfiles.length; i++) {
-      this.votingProfileTable[i] = [];
-      const candidates = this._votingProfile.groupVotingProfiles[i].candidates;
-      this.votingProfileTable[i][0] = this._votingProfile.groupVotingProfiles[i].numberOfVotes.toString();
+  private _fillVotingProfileTable(votingProfile: IVotingProfile): string[][] {
+    const majorityProfileTable: string[][] = [];
+    for (let i = 0; i < votingProfile.groupVotingProfiles.length; i++) {
+      majorityProfileTable[i] = [];
+      const candidates = votingProfile.groupVotingProfiles[i].candidates;
+      majorityProfileTable[i][0] = votingProfile.groupVotingProfiles[i].numberOfVotes.toString();
       for (let j = 1; j < candidates.length + 1; j++) {
-        this.votingProfileTable[i][j] = candidates[j - 1].name;
+        majorityProfileTable[i][j] = candidates[j - 1].name;
       }
     }
 
-    this.votingProfileTable = this.votingProfileTable[0].map((_, colIndex) => this.votingProfileTable.map(row => row[colIndex]));
+    return majorityProfileTable[0].map((_, colIndex) => majorityProfileTable.map(row => row[colIndex]));
   }
 
-  private _fillBordaRuleTable(scores: IVotingScore[]): void {
+  private _fillBordaRuleResults(scores: IVotingScore[]): void {
     for (let i = 0; i < scores.length; i++) {
       this.bordaRuleTable[i] = [];
       this.bordaRuleTable[i][0] = scores[i].candidateName;
@@ -51,7 +54,7 @@ export class AppComponent implements OnInit {
     }
   }
 
-  private _fillgetRelativeMajorityTable(scores: IVotingScore[]): void {
+  private _fillRelativeMajorityResults(scores: IVotingScore[]): void {
     for (let i = 0; i < scores.length; i++) {
       this.relativeMajorityTable[i] = [];
       this.relativeMajorityTable[i][0] = scores[i].candidateName;

@@ -4,6 +4,7 @@ namespace Voting.DAL.Repositories
 {
     public interface IVotingRepository
     {
-        VotingProfile GetVotingProfile();
+        VotingProfile GetRelativeMajorityVotingProfile();
+        VotingProfile GetBordaRuleVotingProfile();
     }
 }

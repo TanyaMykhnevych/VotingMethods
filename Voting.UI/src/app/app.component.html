@@ -3,10 +3,10 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-6">
-      <h4 class="mb-3">Election profile</h4>
+      <h4 class="mb-3">Relative Majority Election Profile</h4>
       <section>
-        <table class="table table-bordered">
-          <tr *ngFor="let row of votingProfileTable; let i = index;">
+        <table class="table table-bordered table-sm">
+          <tr *ngFor="let row of majorityProfileTable; let i = index;">
             <td class="field text-center" *ngFor="let field of row" [ngClass]="i == 0 ? 'bg-info' : ''">
               {{field}}
             </td>
@@ -14,10 +14,10 @@
         </table>
       </section>
       <br />
-      <h4 class="mb-3">The Borda count</h4>
+      <h5 class="mb-3">Results</h5>
       <section>
-        <table class="table table-striped">
-          <tr *ngFor="let row of bordaRuleTable;">
+        <table class="table table-striped table-sm">
+          <tr *ngFor="let row of relativeMajorityTable;">
             <td class="field text-center" *ngFor="let field of row">
               {{field}}
             </td>
@@ -25,10 +25,21 @@
         </table>
       </section>
       <br />
-      <h4 class="mb-3">The rule of relative majority</h4>
+      <h4 class="mb-3">The Borda Election Profile</h4>
       <section>
-        <table class="table table-striped">
-          <tr *ngFor="let row of relativeMajorityTable;">
+        <table class="table table-bordered table-sm">
+          <tr *ngFor="let row of bordaProfileTable; let i = index;">
+            <td class="field text-center" *ngFor="let field of row" [ngClass]="i == 0 ? 'bg-info' : ''">
+              {{field}}
+            </td>
+          </tr>
+        </table>
+      </section>
+      <br />
+      <h5 class="mb-3">Results</h5>
+      <section>
+        <table class="table table-striped table-sm">
+          <tr *ngFor="let row of bordaRuleTable;">
             <td class="field text-center" *ngFor="let field of row">
               {{field}}
             </td>

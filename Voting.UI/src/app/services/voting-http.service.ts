@@ -10,8 +10,12 @@ export class VotingHttpService {
 
     constructor(private _http: HttpClient) {}
 
-    public getVotingProfile(): Observable<IVotingProfile> {
-        return this._http.get<IVotingProfile>(`${AppSettings.apiHost}/voting`);
+    public getRelativeMajorityVotingProfile(): Observable<IVotingProfile> {
+        return this._http.get<IVotingProfile>(`${AppSettings.apiHost}/voting/profile/relative-majority`);
+    }
+
+    public getBordaRuleVotingProfile(): Observable<IVotingProfile> {
+        return this._http.get<IVotingProfile>(`${AppSettings.apiHost}/voting/profile/borda-rule`);
     }
 
     public getBordaRule(): Observable<IVotingScore[]> {

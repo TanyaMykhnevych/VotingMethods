@@ -12,5 +12,6 @@ namespace Voting.DAL
         public DbSet<Candidate> Candidates { get; set; }
         public DbSet<Voter> Voters { get; set; }
         public DbSet<Vote> Votes { get; set; }
+        public DbSet<BordaScore> BordaScores { get; set; }
     }
 }

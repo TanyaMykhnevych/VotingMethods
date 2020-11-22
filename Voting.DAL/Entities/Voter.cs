@@ -7,5 +7,6 @@
         public int Group { get; set; }
 
         public Vote Vote { get; set; }
+        public BordaScore BordaScore { get; set; }
     }
 }
